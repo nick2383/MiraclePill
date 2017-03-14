@@ -16,12 +16,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var countryField: UITextField!
     @IBOutlet weak var zipcodeLabel: UILabel!
     @IBOutlet weak var zipcodeField: UITextField!
+    @IBOutlet weak var successImage: UIImageView!
+    
     
     let states = ["Alaska", "Arkansas", "Alabama", "California", "Maine", "New York"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         statePicker.dataSource = self
+        
         statePicker.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -39,6 +42,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         zipcodeLabel.isHidden = true
         zipcodeField.isHidden = true
         
+    }
+    
+    @IBAction func buyBtnPressed(_ sender: Any) {
+        for view in self.view.subviews as [UIView] {
+            view.isHidden = true
+        }
+        successImage.isHidden = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
